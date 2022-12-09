@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="jumbotron " style="background-color:rgba(0, 0, 0, 0.527);">
+      <h2 class="text-center " style="margin-bottom: 30px;"> Carrito de compras </h2>
+      <div>
+        <div *ngIf="isEmpty(products); else elseTemplate">
+           <h3 class="text-center"> No has agregado productos aún (: </h3>
+           <center><img src="assets/images/iconos/carrito.png" alt=""></center>
+        </div>
+   <ng-template #elseTemplate>
+     <div style="display: inline-flex;" *ngFor="let item of products; let i=index">
+      <div>
+        <ul class="list-unstyled" >
+          <li class="media" >
+             <img [src]="item.image_url" class="mr-3" alt="..." width="110" height="130" >
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">{{item.name}}</h5>
+
+              <p>{{item.description}}</p>
+
+                  <ul>
+              <li>referencia: {{item.ref}}</li>
+               <li>PRECIO: ${{item.precio}}</li>
+
+              </ul>
+
+
+
+            </div>
+          </li>
+
+
+        </ul>
+        <button type="button" class="btn btn-outline-danger btn-block"(click)="descartarProducto(i)">Descartar</button>
+      </div>
+
+      <div style="margin-left: 200px;" >
+
+         <div style="display: inline-flex; margin-left: 100px;">
+          <h3 class="">Cantidad: {{cantidad}} </h3>
+          <button style="margin-left: 30px;" type="button" class="btn btn-dark" (click)="reducirCantidad()">-</button>
+          <button  type="button" class="btn btn-dark" style="margin-left: 50px;" (click)="aumentarCantidad()">+</button>
+
+         </div>
+
+      </div>
+
+    </div>
+
+
+   </ng-template>
+
+
+
+   </div>
+
+
+
+    </div>
+</div>
